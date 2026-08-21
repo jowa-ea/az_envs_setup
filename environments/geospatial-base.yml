@@ -1,0 +1,41 @@
+name: geospatial-base
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+
+  # core data handling
+  - numpy
+  - pandas
+  - pyarrow
+  - psutil
+
+  # geospatial vector/raster stack
+  - geopandas
+  - rasterio
+  - shapely
+  - pyproj
+  - fiona
+  - pyogrio       # fast vector I/O engine used by geopandas
+  - rioxarray      # rasterio + xarray integration
+  - xarray
+  - dask           # out-of-core / parallel arrays, used by xarray & dask-geopandas
+
+  # ML / stats
+  - scikit-learn
+  - scipy
+
+  # plotting / visualization
+  - matplotlib
+  - seaborn
+  - folium         # interactive web maps
+  - contextily     # basemap tiles for matplotlib plots
+
+  # notebooks
+  - jupyterlab
+  - ipykernel
+
+  # misc utilities
+  - tqdm
+  - requests
