@@ -75,7 +75,7 @@ file contains and when to use it.
 python -c "import pandas, geopandas, rasterio, shapely, pyproj, sklearn; print('ok')"
 ```
 
-## 7. (Optional) Register a Jupyter kernel
+## 7. Register a Jupyter kernel
 
 `ipykernel` is already included in `geospatial-base.yml`, so you can
 register the env as a kernel directly:
@@ -83,6 +83,22 @@ register the env as a kernel directly:
 ```bash
 python -m ipykernel install --user --name geospatial-base --display-name "Python (geospatial-base)"
 ```
+
+> **Required on Azure ML compute instances**, not just optional: when VS
+> Code is connected via the Azure ML extension, its notebook kernel picker
+> only lists registered Jupyter kernelspecs (plus AzureML's own curated
+> ones) — it does **not** auto-discover conda envs the way it does over a
+> plain Remote-SSH connection. `conda activate`-ing the env in a terminal
+> has no effect on what shows up in the kernel picker. If you don't run the
+> `ipykernel install` command above, `geospatial-base` simply won't appear
+> as a kernel option, even though the env exists and works fine from a
+> terminal.
+>
+> After registering, verify with `jupyter kernelspec list` (should show
+> `geospatial-base` pointing at
+> `~/.local/share/jupyter/kernels/geospatial-base`), then in VS Code run
+> `Developer: Reload Window` if the new kernel doesn't show up in the
+> picker right away.
 
 ## Adding packages
 
