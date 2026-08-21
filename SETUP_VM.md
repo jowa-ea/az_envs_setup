@@ -27,6 +27,14 @@ cd ~/az_envs_setup
 
 (If it's already cloned there, just `cd` in and `git pull`.)
 
+> **Azure ML compute instance note:** the Notebooks/Terminal shell there
+> starts you in `~/cloudfiles/code` (a persistent storage mount), not the
+> plain home directory. If you run the `git clone` above from that
+> directory, the repo ends up at `~/cloudfiles/code/az_envs_setup` — `cd`
+> there instead of `~/az_envs_setup`. Either `cd ~` first before cloning to
+> get the plain-VM path, or just adjust the `cd` to wherever it actually
+> landed (`pwd` after cloning will tell you).
+
 ## 3. Install Miniconda
 
 Skip this step if `conda` is already available (check with `conda --version`).
@@ -46,7 +54,7 @@ Close and reopen the terminal (or `source ~/.bashrc`) so `conda` is on `PATH`.
 Start with the base geospatial/ML environment:
 
 ```bash
-cd ~/az_envs_setup
+cd ~/az_envs_setup   # or ~/cloudfiles/code/az_envs_setup on an Azure ML compute instance
 conda env create -f environments/geospatial-base.yml
 conda activate geospatial-base
 ```
